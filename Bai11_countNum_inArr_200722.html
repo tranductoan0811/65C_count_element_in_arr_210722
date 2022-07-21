@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function countElement(arr1D) {
+      var count = 0;
+      for (let i = 0; i < arr1D.length; i++) {
+        if (arr1D[i] == arr1D[i-1]) {
+          count++;
+        } else {
+          count = 1;
+        }
+          if (arr1D[i] != arr1D[i+1]) {
+            document.write("Số " + arr1D[i] + " xuất hiện = " + (count) + " (lần) " + "<br>");
+      }
+      }
+    }
+</script>
+
+</head>
+<body>
+
+  <p>Mảng nhập vào là: <span id="input_arr"></span></p>
+  <p>Mảng các ký tự số nhập vào là: <span id="numberArr"></span></p>
+  <p>Mảng các ký tự số nhập vào sau sắp xếp là: <span id="numberArrSort"></span></p>
+  <p>Số lần xuất hiện các ký tự số nhập vào là: <span id="numbercount"></span></p>  
+
+
+</body>
+
+</html>
+<script>
+  let arr = [];
+  let arr_elment;
+  // Tạo mảng theo ký tự nhập vào, đến khi nhập q thì dừng
+    while (arr_elment != 'q') {
+      arr_elment = prompt("Nhập phần tử của mảng: ");
+      arr.push(arr_elment);
+    } 
+  
+  let out_arr = arr; 
+  
+  // Xuất mảng đã tạo
+  document.getElementById("input_arr").innerHTML = out_arr;
+  
+  // xuất mảng số
+  var arr_num = [];
+  for (let i = 0; i < arr.length; i++) {
+      if (isNaN(arr[i]) == false) {
+        arr_num.push(arr[i] + " ");
+      }
+  } 
+
+  let out_arr_num = arr_num;
+  document.getElementById("numberArr").innerHTML = out_arr_num;
+
+  // sắp xếp mảng số theo thứ tự tăng dần và in mảng số sau sắp xếp
+   
+  document.getElementById("numberArrSort").innerHTML = out_arr_num.sort(function(a,b){return a-b});
+
+  // In số lần xuất hiện của các ký tự số trong mảng
+  let out_arr_num_sort = out_arr_num.sort(function(a,b){return a-b});
+
+  document.getElementById("numbercount").innerHTML = countElement(out_arr_num_sort);
+  
+</script>
+
